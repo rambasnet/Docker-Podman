@@ -76,7 +76,7 @@ then
     winenv podman run -it --rm \
 	   -v "$HOST_DIR:$GUEST_DIR" \
 	   -p 8888:8888 \
-     -h ubuntu-jupyter \
+     -h kali-jupyter \
 	   "$DOCKER_TAG" \
 	   "$@"
 else
@@ -84,7 +84,7 @@ else
     winenv podman run -it --rm \
 	   -v "$HOST_DIR:$GUEST_DIR" \
 	   -p 8888:8888 \
-     -h ubuntu-jupyter \
+     -h kali-jupyter \
 	   "$DOCKER_TAG" \
 	   bash -c "jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root"
 fi

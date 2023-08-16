@@ -24,7 +24,7 @@ windows() {
 }
 
 winenv() {
-    if windows
+  if windows
     then
 	winpty "$@"
     else
@@ -45,13 +45,13 @@ winpath() {
     fi
 }
 
-# use the directory name as the tag name for docker
-DOCKER_TAG=$(basename "$SCRIPT_DIR")
+# use the directory name as the tag name for podman
+PODMAN_TAG=$(basename "$SCRIPT_DIR")
 
 # Host (source) directory to mount in container
 HOST_DIR="$(winpath "$SCRIPT_DIR")"
 
-# Guest (target) directory where directoy is mounted
+# Guest (target) directory where host directoy is mounted
 GUEST_DIR=/app
 
 if [ ! -f Dockerfile ]
@@ -60,9 +60,8 @@ then
     exit 1
 fi
 
-
-echo "podman build '$SCRIPT_DIR/Dockerfile' with tag '$DOCKER_TAG'..."
-if podman build -t "$DOCKER_TAG" .
+echo "podman build '$SCRIPT_DIR/Dockerfile' with tag '$PODMAN_TAG'..."
+if podman build -t "$PODMAN_TAG" .
 then
     echo "podman build ok."
 else
@@ -70,21 +69,21 @@ else
     exit 1
 fi
 
-echo "podman run '$DOCKER_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'): " "$@"
+echo "podman run '$PODMAN_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'): " "$@"
 if [ $# -gt 0 ]
 then
     winenv podman run -it --rm \
 	   -v "$HOST_DIR:$GUEST_DIR" \
-	   -p 8888:8888 \
-     -h ubuntu-jupyter \
-	   "$DOCKER_TAG" \
+     -h ubuntu \
+     --cap-add=NET_RAW \
+	   "$PODMAN_TAG" \
 	   "$@"
 else
     echo "Type CTRL-D or exit to exit the interactive shell"
     winenv podman run -it --rm \
 	   -v "$HOST_DIR:$GUEST_DIR" \
-	   -p 8888:8888 \
-     -h ubuntu-jupyter \
-	   "$DOCKER_TAG" \
-	   bash -c "jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root"
+     -h ubuntu \
+     --cap-add=NET_RAW \
+	   "$PODMAN_TAG" \
+	   bash -c 'bash setup.sh && bash'
 fi

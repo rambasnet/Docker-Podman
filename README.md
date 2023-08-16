@@ -1,14 +1,15 @@
-# Dockerfiles
+# Podman
 
-Dockerfile Templates for various courses
+Dockerfile Templates for various courses to use with Podman Container
 
 ## Install following tools
 
-1. Docker Desktop: [https://docs.docker.com/desktop/](https://docs.docker.com/desktop/)
+1. Podman Desktop: [https://podman-desktop.io/downloads/](https://podman-desktop.io/downloads)
+2. Follow instructions from here: [https://podman-desktop.io/docs/intro](https://podman-desktop.io/docs/intro)
 
-### Windows System
+### Windows system
 
-It takes a bit of extra work :(
+It takes a bit of extra work...
 
 1. Install git along with git-bash: [https://git-scm.com/download/win](https://git-scm.com/download/win)
-2. Follow the instructions here: [https://www.makeuseof.com/how-to-install-docker-windows-10-11/](https://www.makeuseof.com/how-to-install-docker-windows-10-11/)
+

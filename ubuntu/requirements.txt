@@ -1,0 +1,5 @@
+scapy
+pytest
+jupyter
+mypy
+hypothesis
