@@ -3,3 +3,4 @@ pytest
 jupyter
 mypy
 hypothesis
+pwntools

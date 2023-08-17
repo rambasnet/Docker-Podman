@@ -70,6 +70,7 @@ else
 fi
 
 echo "podman run '$PODMAN_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'): " "$@"
+
 if [ $# -gt 0 ]
 then
   winenv podman run -it --rm \
@@ -78,7 +79,7 @@ then
     -p 8080:8080 \
     --cap-add=NET_RAW \
     "$PODMAN_TAG" \
-    "$@"
+    bash -c 'bash setup.sh; bash -i'
 else
   echo "Type CTRL-D or exit to exit the interactive shell"
   winenv podman run -it --rm \
@@ -87,5 +88,5 @@ else
     -p 8080:8080 \
     --cap-add=NET_RAW \
     "$PODMAN_TAG" \
-    bash -c "cd $GUEST_DIR; bash setup.sh; bash -i"
+    bash -c "bash setup.sh; bash -i"
 fi

@@ -77,7 +77,7 @@ then
      -h ubuntu \
      --cap-add=NET_RAW \
 	   "$PODMAN_TAG" \
-	   "$@"
+	   bash -c 'bash setup.sh; bash -i'
 else
     echo "Type CTRL-D or exit to exit the interactive shell"
     winenv podman run -it --rm \

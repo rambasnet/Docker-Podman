@@ -4,13 +4,14 @@ RUN apt update \
   && apt install -y \
   build-essential ccache libboost-all-dev \
   gcc-multilib g++-multilib \
-  python3 python3-pip \
+  python3 python3-pip python3-dev \
   gdb gdb-multiarch gdbserver\
   libsqlite3-dev \
   time curl cmake git nano dos2unix \
   net-tools iputils-ping iproute2 \
   man-db host dnsutils netcat-traditional \
-  nmap traceroute sudo
+  nmap traceroute sudo \
+  libssl-dev libffi-dev
 
 RUN pip3 install --upgrade pip
 
