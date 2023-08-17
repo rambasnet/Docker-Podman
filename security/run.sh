@@ -87,5 +87,5 @@ else
     -p 8080:8080 \
     --cap-add=NET_RAW \
     "$PODMAN_TAG" \
-    bash -c "cd $GUEST_DIR; bash git-authenticate.sh; bash -i"
+    bash -c "cd $GUEST_DIR; bash setup.sh; bash -i"
 fi

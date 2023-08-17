@@ -85,5 +85,5 @@ else
      -h ubuntu \
      --cap-add=NET_RAW \
 	   "$PODMAN_TAG" \
-	   bash -c 'bash setup.sh && bash'
+	   bash -c 'bash setup.sh; bash -i'
 fi

@@ -17,6 +17,13 @@ RUN pip3 install --upgrade pip
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+ARG USER=kali
+ARG PASSWD=kali
+# add user:pass with home/user and bash shell and add it to sudo group
+# user can run sudo without password
+RUN useradd -m -s /bin/bash -G sudo -p ${PASSWD} ${USER}
+RUN echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 WORKDIR /app
 
 RUN echo export PATH='"'/app/bin:/app/bin/$(uname -s)-$(uname -m):/app:'${PATH}''"' >> /root/.bashrc
