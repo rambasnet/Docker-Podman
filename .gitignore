@@ -2,3 +2,5 @@
 .ssh
 .ipynb_checkpoints
 data
+.out
+.ipynb_checkpoints

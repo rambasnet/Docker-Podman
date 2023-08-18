@@ -36,7 +36,7 @@ winenv() {
 winpath() {
   if which cygpath > /dev/null # git-bash/msys/cygwin
   then
-      cygpath -w "$@"
+    cygpath -w "$@"
   elif [ -r /proc/version ] && grep -q Microsoft /proc/version
   then
     echo readlink -m "$@" | sed 's|^/mnt/\([a-z]\)|\U\1:|' | sed 's|/|\\|g'

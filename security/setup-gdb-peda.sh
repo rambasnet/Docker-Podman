@@ -17,8 +17,8 @@ echo "set history expansion on" >> ~/.gdbinit
 # check if peda is cloned
 if [ ! -d ./peda ]
 then
-    echo "Installing peda"
-    git clone https://github.com/longld/peda.git ./peda
+  echo "Installing peda"
+  git clone https://github.com/longld/peda.git ./peda
 fi
 echo "source ./peda/peda.py" >> ~/.gdbinit
 echo "peda installed..."
