@@ -1,3 +1,5 @@
+#!/bin/bash
+
 eval $(ssh-agent)
 if [ -f .ssh/id_rsa ]; then
   ssh-add .ssh/id_rsa

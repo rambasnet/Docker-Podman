@@ -25,11 +25,11 @@ windows() {
 
 winenv() {
   if windows
-  then
-	  winpty "$@"
-  else
-	  "$@"
-  fi
+    then
+	winpty "$@"
+    else
+	"$@"
+    fi
 }
 
 # Try to convert for big-bash/msys/cygwin/wsl...
@@ -52,7 +52,7 @@ DOCKER_TAG=$(basename "$SCRIPT_DIR")
 HOST_DIR="$(winpath "$SCRIPT_DIR")"
 
 # Guest (target) directory where directoy is mounted
-GUEST_DIR=/data/db
+GUEST_DIR=/app
 
 if [ ! -f Dockerfile ]
 then
@@ -61,31 +61,29 @@ then
 fi
 
 echo "podman build '$SCRIPT_DIR/Dockerfile' with tag '$DOCKER_TAG'..."
-if podman build -t "$DOCKER_TAG" .
+if docker build -t "$DOCKER_TAG" .
 then
   echo "podman build ok."
 else
   echo "podman build failed."
   exit 1
 fi
-
 mkdir -p "$HOST_DIR/data"
 echo "podman run '$DOCKER_TAG' (mounting host '$HOST_DIR/data' as '$GUEST_DIR'): " "$@"
 if [ $# -gt 0 ]
 then
   winenv podman run -d \
-    -v "$HOST_DIR:$GUEST_DIR" \
     -v "$HOST_DIR/data:$GUEST_DIR" \
-    -p 27017:27017 \
-    -p 28018:28018 \
-    "$DOCKER_TAG" \
-    "$@"
+    -p 3306:3306 \
+    --name mysql_db \
+    --env="MYSQL_ROOT_PASSWORD=toor" \
+    "$DOCKER_TAG"
 else
   echo "Type CTRL-D or exit to exit the interactive shell"
   winenv podman run -d \
     -v "$HOST_DIR/data:$GUEST_DIR" \
-    -p 27017:27017 \
-    -p 28018:28018 \
-    --name my_mongodb \
+    -p 3306:3306 \
+    --name mysql_db \
+    --env="MYSQL_ROOT_PASSWORD=toor" \
     "$DOCKER_TAG"
 fi

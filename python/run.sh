@@ -76,7 +76,6 @@ then
 	   -v "$HOST_DIR:$GUEST_DIR" \
      -h ubuntu \
      -p 8080:8080 \
-      --name python \
 	   "$PODMAN_TAG" \
 	   "$@"
 else
