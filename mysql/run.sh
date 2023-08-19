@@ -79,7 +79,7 @@ then
     --env="MYSQL_ROOT_PASSWORD=toor" \
     "$DOCKER_TAG"
 else
-  echo "Type CTRL-D or exit to exit the interactive shell"
+  echo "Type podman stop mysql_db to stop the container."
   winenv podman run -d \
     -v "$HOST_DIR/data:$GUEST_DIR" \
     -p 3306:3306 \

@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 def get_database():
    # find the IP address of the mongodb container
-   # docker inspect  my_mongodb | grep IPAddress
+   # podman inspect  my_mongodb | grep IPAddress
    # Provide the mongodb atlas url to connect python to mongodb using pymongo
    # not using authentication for local containers
    CONNECTION_STRING = "mongodb://172.17.0.3:27017/myFirstDatabase"
