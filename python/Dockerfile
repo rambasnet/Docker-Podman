@@ -3,9 +3,7 @@ FROM python:3
 RUN apt update \
   && apt install -y \
   sqlite3 build-essential time curl cmake git nano dos2unix \
-  net-tools iputils-ping iproute2 \
-  && apt clean \
-  && /bin/rm -rf /var/lib/apt/lists/*
+  net-tools iputils-ping iproute2 
 
 RUN pip install --upgrade pip
 

@@ -73,7 +73,7 @@ fi
 echo "podman run '$DOCKER_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'): " "$@"
 if [ $# -gt 0 ]
 then
-    winenv podman run -it --rm \
+    winenv podman run -it \
 	   -v "$HOST_DIR:$GUEST_DIR" \
 	   -p 8888:8888 \
      -h ubuntu-jupyter \

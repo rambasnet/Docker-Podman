@@ -1,6 +1,7 @@
 # Podman
 
-Dockerfile Templates for various courses to use with Podman Container
+- Docker templates for various courses to use with Podman Container
+- If using Docker, search and replace podman with docker command
 
 ## Install following tools
 
@@ -8,8 +9,6 @@ Dockerfile Templates for various courses to use with Podman Container
 2. Follow instructions from here: [https://podman-desktop.io/docs/intro](https://podman-desktop.io/docs/intro)
 
 ### Windows system
-
-It takes a bit of extra work...
 
 1. Install git along with git-bash: [https://git-scm.com/download/win](https://git-scm.com/download/win)
 

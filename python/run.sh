@@ -72,7 +72,7 @@ fi
 echo "podman run '$PODMAN_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'): " "$@"
 if [ $# -gt 0 ]
 then
-    winenv podman run -it --rm \
+    winenv podman run -it \
 	   -v "$HOST_DIR:$GUEST_DIR" \
      -h ubuntu \
      -p 8080:8080 \
