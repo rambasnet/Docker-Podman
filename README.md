@@ -1,7 +1,8 @@
 # Podman
 
 - Docker templates for various courses to use with Podman Container
-- If using Docker, search and replace podman with docker command
+- If using Docker, search and replace podman with docker command (case sensitive)
+- Make sure to copy the files into a folder with all lowercase names beacuse the run.sh and run-jupyter.sh scripts use the parent folder name as the container name
 
 ## Install following tools
 

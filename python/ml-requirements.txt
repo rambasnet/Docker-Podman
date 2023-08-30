@@ -177,3 +177,6 @@ widgetsnbextension==3.5.2
 WTForms==3.0.1
 xxhash==3.3.0
 yarl==1.9.2
+mypy
+hypothesis
+pytest

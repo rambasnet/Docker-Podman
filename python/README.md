@@ -1,6 +1,6 @@
-# Using Docker for Python courses
+# Using Docker/Podman for Python courses
 
-Follow these instructions for Beginning Python, Advanced Python
+Follow these instructions for Beginning Python, Intro-DB, Advanced Python, Python Machine Learning, etc.
 
 ## Initial setup
 
