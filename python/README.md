@@ -11,7 +11,7 @@ Note that the initial setup may take some time to build docker image.
     - `Users/rbasnet/fall2023/beg-python`
     - NOTE - course folder must be lowercase as it's the name used for docker image
 
-2. Copy all the files from python folder into your course folder
+2. Copy Dovker file from python folder and .sh scripts from root folder into your course folder
 
 3. Using a Terminal (git-bash on Windows):
 
