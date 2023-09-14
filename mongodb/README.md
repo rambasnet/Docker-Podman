@@ -2,34 +2,31 @@
 
 ## Initial Setup
 
-- Create a folder path such as: mongodb/data
-  - e.g. Users/rbasnet/mongodb/data
-- Copy Dockerfile and run.sh files into mongodb folder
-- Using terminal run run.sh script
-  - use git-bash on windows
-
-  ```bash
-  $ bash run.sh
-  ```
-- Check if the my_mongodb container is running
-  ```bash
-  $ docker ps
-  $ docker ps -a
-  ```
-
-## Stop and remove mongodb server container
+- create a folder say mongodb somewhere you desire
+- Copy Dockerfile and run.sh files from this folder into the mongodb folder
+- create data folder to store all the mongodb databases
 
 ```bash
-$ docker stop my_mongodb
-$ docker rm my_mongodb
+  mongodb/data
+```
+
+- Check if the docker-mongodb container is running
+
+```bash
+$ docker ps
 ```
 
 ## Run MongoDB server
 
-- Open terminal change working directory to mongodb
+- Open terminal change working directory to mongodb that contains Dockerfile and run.sh script
 - Run run.sh script (use git-bash terminal on Windows)
 
 ```bash
 $ cd /Users/rbasnet/mongodb
 $ bash run.sh
+```
+## Stop mongodb server container
+
+```bash
+$ docker stop [id]
 ```
