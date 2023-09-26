@@ -90,9 +90,6 @@ winpath() {
 
 # use the directory name as the tag name for podman
 CONTAINER_TAG=$container-$(basename "$SCRIPT_DIR")
-CONTAINER_TAG=$(echo "$CONTAINER_TAG" | tr '[:upper:]' '[:lower:]')
-# replace spaces with hypens
-CONTAINER_TAG=$(echo "$CONTAINER_TAG" | sed 's/ /-/g')
 
 # Host (source) directory to mount in container
 HOST_DIR="$(winpath "$SCRIPT_DIR")"
@@ -115,9 +112,10 @@ else
     exit 1
 fi
 
+
 if [ ${#args[@]} -eq 0 ]
 then
-    args=("bash" "-c" "cd $GUEST_DIR; bash git-authenticate.sh; cp .kattisrc /root; bash -i")
+    args=("bash" "-c" "cd $GUEST_DIR; bash -i")
 fi
 
 echo "$container run '$CONTAINER_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'):" \
@@ -125,6 +123,9 @@ echo "$container run '$CONTAINER_TAG' (mounting host '$HOST_DIR' as '$GUEST_DIR'
 
 winenv $container run -it --rm \
     -v "$HOST_DIR:$GUEST_DIR$(optZ)" \
+    -v "$HOME/.ssh:/home/user/.ssh" \
+    -v "$HOME/.gnupg:/home/user/.gnupg" \
+    -v "$HOME/.gitconfig:/home/user/.gitconfig" \
     -h ubuntu \
     -p 8080:8080 \
     "$CONTAINER_TAG" \
